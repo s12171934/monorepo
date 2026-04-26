@@ -12,15 +12,14 @@ import {
 	Scope,
 } from '@nestjs/common';
 
-import { User } from './entities/user/user.entity.js';
+import { UserEntity } from './entities/user/user.entity.js';
 import {
 	createRepositoryConfig,
 	getRepositoryDatabaseOptionsFromEnv,
 	type RepositoryDatabaseOptions,
 } from './repository.config.js';
 
-export type UserEntity = InferEntity<typeof User>;
-export type UserRepository = EntityRepository<UserEntity>;
+export type UserRepository = EntityRepository<InferEntity<typeof UserEntity>>;
 export type RepositoryOrm = MikroORM;
 export type RepositoryEntityManager = EntityManager;
 
@@ -65,7 +64,7 @@ export class RepositoryModule {
 			provide: USER_REPOSITORY_TOKEN,
 			scope: Scope.REQUEST,
 			inject: [REPOSITORY_ENTITY_MANAGER_TOKEN],
-			useFactory: (em: EntityManager) => em.getRepository(User),
+			useFactory: (em: EntityManager) => em.getRepository(UserEntity),
 		};
 
 		const ormShutdownProvider = {

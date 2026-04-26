@@ -1,7 +1,7 @@
 import { Migrator } from '@mikro-orm/migrations';
 import { defineConfig, type Options } from '@mikro-orm/postgresql';
 
-import { User } from './entities/user/user.entity.js';
+import { UserEntity } from './entities/user/user.entity.js';
 
 export interface RepositoryDatabaseOptions {
 	host?: string;
@@ -32,7 +32,7 @@ export function createRepositoryConfig(
 		user: options.user ?? 'postgres',
 		password: options.password ?? 'postgres',
 		dbName: options.dbName ?? 'app',
-		entities: [User],
+		entities: [UserEntity],
 		extensions: [Migrator],
 		migrations: {
 			path: './migrations',
