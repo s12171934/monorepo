@@ -20,7 +20,7 @@ function serializeUserCookie(user: Express.User) {
 
 @Controller()
 export class AppController {
-	@Get('api/login')
+	@Get()
 	login(@Req() req: Request, @Res() res: Response, @Next() next: NextFunction) {
 		console.log('Login route accessed');
 		return passport.authenticate('github', { scope: ['user:email'] })(
@@ -30,7 +30,7 @@ export class AppController {
 		);
 	}
 
-	@Get('api/login/github/callback')
+	@Get('github/callback')
 	githubLoginCallback(
 		@Req() req: Request,
 		@Res() res: Response,
