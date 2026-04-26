@@ -1,6 +1,7 @@
 import { Controller, Get, Next, Req, Res } from '@nestjs/common';
 import type { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
+import { appEnv } from './config/env';
 
 function serializeUserCookie(user: Express.User) {
 	const profile = user as Record<string, unknown>;
@@ -36,7 +37,7 @@ export class AppController {
 		@Next() next: NextFunction,
 	) {
 		console.log('GitHub login callback received');
-		const clientUrl = Bun.env.CLIENT_URL ?? 'http://localhost:3000';
+		const clientUrl = appEnv.CLIENT_URL;
 
 		return passport.authenticate(
 			'github',
@@ -50,7 +51,7 @@ export class AppController {
 				res.cookie('user', serializeUserCookie(user), {
 					httpOnly: false,
 					sameSite: 'lax',
-					secure: Bun.env.NODE_ENV === 'production',
+					secure: appEnv.NAME === 'prod',
 					path: '/',
 					maxAge: 1000 * 60 * 60 * 24,
 				});

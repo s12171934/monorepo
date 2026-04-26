@@ -2,10 +2,11 @@ import passport from 'passport';
 import GitHubStrategy, { type Profile } from 'passport-github2';
 
 import type { AppService } from '../app.service';
+import { appEnv } from './env';
 
-const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_CALLBACK_URL } = Bun.env;
+const { CLIENT_ID, CLIENT_SECRET, CALLBACK_URL } = appEnv.GITHUB;
 
-if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET || !GITHUB_CALLBACK_URL) {
+if (!CLIENT_ID || !CLIENT_SECRET || !CALLBACK_URL) {
 	throw new Error(
 		'GitHub OAuth credentials are not set in environment variables.',
 	);
@@ -21,9 +22,9 @@ export function configurePassport(appService: AppService) {
 	passport.use(
 		new GitHubStrategy(
 			{
-				clientID: GITHUB_CLIENT_ID,
-				clientSecret: GITHUB_CLIENT_SECRET,
-				callbackURL: GITHUB_CALLBACK_URL,
+				clientID: CLIENT_ID,
+				clientSecret: CLIENT_SECRET,
+				callbackURL: CALLBACK_URL,
 			},
 			async (
 				_accessToken: string,

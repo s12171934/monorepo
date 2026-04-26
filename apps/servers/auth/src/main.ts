@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import passport from 'passport';
 import { AppModule } from './app.module';
 import { AppService } from './app.service';
+import { appEnv } from './config/env';
 import { configurePassport } from './config/passport';
 
 async function bootstrap() {
@@ -9,8 +10,7 @@ async function bootstrap() {
 	app.enableShutdownHooks();
 	configurePassport(app.get(AppService));
 	app.use(passport.initialize());
-	console.log(Bun.env.PORT);
-	const port = Number(Bun.env.PORT ?? 8080);
+	const port = appEnv.PORT;
 
 	await app.listen(port);
 }

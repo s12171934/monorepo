@@ -8,6 +8,7 @@ import {
 	Res,
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
+import { appEnv } from './config/env';
 
 @Controller()
 export class AppController {
@@ -17,7 +18,7 @@ export class AppController {
 		@Res() res: Response,
 		@RequestHeaders() headers: Record<string, string | string[] | undefined>,
 	) {
-		const authServerUrl = Bun.env.AUTH_SERVER_URL ?? 'http://localhost:8081';
+		const authServerUrl = appEnv.AUTH_SERVER_URL;
 		const targetUrl = new URL('/api/login/github/callback', authServerUrl);
 
 		for (const [key, value] of Object.entries(req.query)) {
@@ -82,7 +83,7 @@ export class AppController {
 		@Res() res: Response,
 		@RequestHeaders() headers: Record<string, string | string[] | undefined>,
 	) {
-		const authServerUrl = Bun.env.AUTH_SERVER_URL ?? 'http://localhost:8081';
+		const authServerUrl = appEnv.AUTH_SERVER_URL;
 		const targetUrl = new URL('/api/login', authServerUrl);
 
 		for (const [key, value] of Object.entries(req.query)) {
