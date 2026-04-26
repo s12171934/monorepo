@@ -5,7 +5,7 @@ node_modules
 .pnp
 .pnp.js
 
-# Local env files
+# dotenv environment variable files
 .env
 .env.local
 .env.development.local
@@ -14,6 +14,7 @@ node_modules
 
 # Testing
 coverage
+.nyc_output
 
 # Turbo
 .turbo
@@ -26,13 +27,59 @@ coverage
 out/
 build
 dist
+dist-ssr
+*.tgz
 
-
-# Debug
+# Logs
+logs
+*.log
+_.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+
+# OS
+.DS_Store
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temp
+.temp
+.tmp
+.cache
 
 # Misc
-.DS_Store
 *.pem
+*.local
+*.lcov
+*.tsbuildinfo
+.eslintcache

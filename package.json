@@ -2,12 +2,20 @@
   "name": "monorepo",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build": "./scripts/turbo.sh build",
+    "dev": "./scripts/turbo.sh dev",
+    "turbo": "./scripts/turbo.sh",
+    "db:up": "docker compose up -d postgresql",
+    "db:down": "docker compose down",
+    "db:logs": "docker compose logs -f postgresql",
+    "db:migration:create": "bun run --cwd packages/repository migration:create",
+    "db:migration:up": "bun run --cwd packages/repository migration:up",
+    "db:migration:down": "bun run --cwd packages/repository migration:down",
+    "db:migration:list": "bun run --cwd packages/repository migration:list",
     "lint:eslint": "eslint apps/clients/shell/src/main.tsx",
-    "lint": "turbo run lint",
+    "lint": "./scripts/turbo.sh lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "./scripts/turbo.sh check-types"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.11",
@@ -18,7 +26,8 @@
     "eslint-plugin-import": "^2.32.0",
     "globals": "^17.4.0",
     "typescript": "5.9.2",
-    "typescript-eslint": "^8.46.2"
+    "typescript-eslint": "^8.46.2",
+    "@types/bun": "latest"
   },
   "engines": {
     "node": ">=18"
@@ -26,6 +35,7 @@
   "packageManager": "bun@1.3.12",
   "workspaces": [
     "apps/*",
+    "apps/*/*",
     "packages/*"
   ]
 }

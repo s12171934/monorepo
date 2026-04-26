@@ -1,6 +1,6 @@
 import js from '@eslint/js';
-import globals from 'globals';
 import importPlugin from 'eslint-plugin-import';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
@@ -33,7 +33,7 @@ export default tseslint.config(
 			},
 		},
 		rules: {
-			'import/no-unresolved': ['error', { ignore: ['^virtual:'] }],
+			'import/no-unresolved': ['error', { ignore: ['^virtual:', 'home/App'] }],
 		},
 	},
 );
