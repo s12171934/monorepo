@@ -1,0 +1,9 @@
+{
+	"remote": {
+		"home": {
+			"url": "http://localhost:3001",
+			"scope": "home",
+			"module": "./App"
+		}
+	}
+}
