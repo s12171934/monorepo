@@ -10,7 +10,7 @@ type RemoteManifest = {
 		{
 			url: string;
 			scope: string;
-			module: string;
+			module: string | string[];
 		}
 	>;
 };

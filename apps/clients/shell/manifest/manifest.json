@@ -4,6 +4,11 @@
 			"url": "http://localhost:3001",
 			"scope": "home",
 			"module": "./App"
+		},
+		"layout": {
+			"url": "http://localhost:3002",
+			"scope": "layout",
+			"module": "./shared"
 		}
 	}
 }

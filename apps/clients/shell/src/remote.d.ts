@@ -6,3 +6,12 @@ declare module 'home/App' {
 	const Home: ComponentType<HomeProps>;
 	export default Home;
 }
+
+declare module 'layout/shared' {
+	import type { ComponentType } from 'react';
+
+	type Props = Record<string, never>;
+
+	export const Header: ComponentType<Props>;
+	export const Footer: ComponentType<Props>;
+}

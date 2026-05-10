@@ -1,5 +1,5 @@
 {
-	"name": "home",
+	"name": "layout",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
@@ -7,7 +7,7 @@
 		"dev": "bun run build && (bun run dev:watch --skip-initial & bun run preview)",
 		"dev:watch": "bun run ../../../scripts/watch-build.ts .",
 		"build": "tsc -b && vite build",
-		"preview": "vite preview --host 127.0.0.1 --port 3001 --strictPort"
+		"preview": "vite preview --host 127.0.0.1 --port 3002 --strictPort"
 	},
 	"dependencies": {
 		"react": "^19.2.4",

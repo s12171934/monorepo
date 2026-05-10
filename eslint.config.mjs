@@ -33,7 +33,10 @@ export default tseslint.config(
 			},
 		},
 		rules: {
-			'import/no-unresolved': ['error', { ignore: ['^virtual:', 'home/App'] }],
+			'import/no-unresolved': [
+				'error',
+				{ ignore: ['^virtual:', 'home/App', 'layout'] },
+			],
 		},
 	},
 );
