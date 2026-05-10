@@ -16,5 +16,17 @@ export const createUserSchema = userSchema.omit({
 	updatedAt: true,
 });
 
+export const userProfileSchema = userSchema
+	.pick({
+		id: true,
+		username: true,
+		displayName: true,
+	})
+	.extend({
+		avatarUrl: z.url(),
+		profileUrl: z.url(),
+	});
+
 export type User = z.infer<typeof userSchema>;
 export type CreateUserInput = z.infer<typeof createUserSchema>;
+export type UserProfile = z.infer<typeof userProfileSchema>;

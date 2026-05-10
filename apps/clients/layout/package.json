@@ -10,6 +10,7 @@
 		"preview": "vite preview --host 127.0.0.1 --port 3002 --strictPort"
 	},
 	"dependencies": {
+		"@repo/types": "workspace:*",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4"
 	},
