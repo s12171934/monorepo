@@ -25,7 +25,7 @@ export class ProxyModule implements NestModule {
 				}),
 			)
 			.forRoutes({
-				path: 'api/login/{*path}',
+				path: 'login{/*path}',
 				method: RequestMethod.ALL,
 			});
 	}
